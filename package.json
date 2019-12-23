@@ -8,10 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "loader-utils": "^1.2.3"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "webpack": "^4.41.2"
+    "webpack": "^4.41.4"
   }
 }

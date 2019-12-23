@@ -1,16 +1,4 @@
 module.exports = function(content, mapSource) {
-  //var callback = this.async();
-  /*content = content.replace(/import \$SP from 'sharepointplus'/, `import spInit from 'sharepointplus/es5/init.js'
-import list from 'sharepointplus/es5/lists/list.js'
-import get from 'sharepointplus/es5/lists/get.js'
-import info from 'sharepointplus/es5/lists/info.js'
-import cleanResult from 'sharepointplus/es5/lists/cleanResult.js'
-import view from 'sharepointplus/es5/lists/view.js'
-import toDate from 'sharepointplus/es5/utils/toDate.js'
-import getLookup from 'sharepointplus/es5/utils/getLookup.js'
-import getPeopleLookup from 'sharepointplus/es5/utils/getPeopleLookup.js'
-const $SP = spInit({list:list, get:get, info, cleanResult, toDate, getLookup, getPeopleLookup, view });`);*/
-
   this.async();
   this.cacheable();
 
@@ -40,11 +28,8 @@ const $SP = spInit({list:list, get:get, info, cleanResult, toDate, getLookup, ge
         });
         newContent.push("const $SP = spInit({"+init.join(', ')+"});");
         content = content.replace(/import \$SP from 'sharepointplus'/, newContent.join("\n"));
-        //console.log(this.resourcePath)
-        //console.log(newContent)
       }
     }
   }
   this.callback(null, content, mapSource);
-  //return content;
 };
