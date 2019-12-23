@@ -27,7 +27,7 @@ The plugin will analyze your code, in files with extension `.js`, `.jsx`, `.ts` 
 import $SP from 'sharepointplus'
 ```
 
-Then it will replace it with the below code:
+Then it will replace it with a similar code as the one below:
 ```js
 import spInit from 'sharepointplus/es5/init.js'
 import list from 'sharepointplus/es5/lists/list.js' // if `$SP().list()` is used in the analyzed file
