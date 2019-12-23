@@ -1,6 +1,6 @@
 # sharepointplus-loader
 
-Webpack plugin that permits to leverage tree-shaking for https://aymkdn.github.io/SharepointPlus/
+Webpack plugin that permits to leverage tree-shaking for https://aymkdn.github.io/SharepointPlus/ (starting from SharepointPlus v6.0)
 
 ## Installation
 
