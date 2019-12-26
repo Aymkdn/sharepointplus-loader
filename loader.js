@@ -23,7 +23,6 @@ module.exports = function(content, mapSource) {
         var newContent = ["import spInit from 'sharepointplus/es5/init.js'"];
         var init = [];
         modules.forEach(function(mod) {
-          console.log(mod," => ",paths[mod]);
           newContent.push("import "+mod+" from 'sharepointplus/es5"+paths[mod]+"'");
           init.push(mod+':'+mod);
         });
