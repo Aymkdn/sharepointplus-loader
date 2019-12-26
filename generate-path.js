@@ -19,11 +19,10 @@ var srcDir = process.argv[2].replace(/\/+$/,"");
 var regExpDir = new RegExp(srcDir);
 getFiles(srcDir).forEach(filePath => {
   var content = fs.readFileSync(filePath, 'utf8');
-  if (!/@ignore/.test(content)) {
-    var mtch = content.match(/^export .* (\w+)\(.*\) {/m);
-    if (mtch) {
-      result.push({fctName:mtch[1], path:filePath.replace(regExpDir, "")});
-    }
+  var mtch = content.match(/@name (.*)$/m);
+  if (mtch) {
+    let fctName = mtch[1].split('.');
+    result.push({fctName:fctName[fctName.length-1], path:filePath.replace(regExpDir, "")});
   }
 });
 
