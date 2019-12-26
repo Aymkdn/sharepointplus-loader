@@ -8,8 +8,10 @@ Webpack plugin that permits to leverage tree-shaking for https://aymkdn.github.i
 npm install sharepointplus-loader
 ```
 
-And in your Webpack config file (e.g. `webpack.conf.js`), add it to the plugins:
+
+And, for regular Webpack config file (e.g. `webpack.conf.js`), add it to the plugins:
 ```js
+// ----- file 'webpack.conf.js'
 const webpack = require('webpack');
 const SharepointPlusLoaderPlugin = require('sharepointplus-loader/plugin'); // load the plugin
 module.exports = {
@@ -19,6 +21,29 @@ module.exports = {
   ]
 };
 ```
+
+Or if you work **with SPFx** you have to edit your `gulpfile.js` file:
+```js
+// ----- file 'gulpfile.js'
+const gulp = require('gulp');
+const build = require('@microsoft/sp-build-web');
+[ ... your configuration ... ]
+
+// add the plugin with the below block of code:
+const webpack = require('webpack');
+const SharepointPlusLoaderPlugin = require('sharepointplus-loader/plugin'); // load the plugin
+build.configureWebpack.mergeConfig({
+  additionalConfiguration: (generatedConfig) => {
+    if (!Array.isArray(generatedConfig.plugins)) generatedConfig.plugins=[];
+    generatedConfig.plugins.push(new SharepointPlusLoaderPlugin()); // add the plugin here
+    // return modified config => SPFx build pipeline
+    return generatedConfig;
+  }
+});
+
+build.initialize(gulp);
+```
+
 
 ## How it works
 
