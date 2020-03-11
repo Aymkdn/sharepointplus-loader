@@ -65,7 +65,6 @@ module.exports = function(content, mapSource) {
         init.push(mod+':'+mod);
       });
       newContent.push("const $SP = spInit({"+init.join(', ')+"});");
-      console.log(newContent.join("\n"));
       content = content.replace(/import \$SP from .sharepointplus.|import \* as \$SP from .sharepointplus./, newContent.join("\n"));
     }
   }
