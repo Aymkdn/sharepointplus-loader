@@ -2,11 +2,11 @@ var glob = require("glob");
 var fs = require('fs');
 var path = require('path');
 
-function findModules (content, modules) {
-  // Find any calls to $SP() that is not inside comments
-  var mtch = content.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').match(/(.*)?\$SP\(\).*/g);
+function findModules (filePath, content, modules) {
   modules = modules || new Set();
-
+  // Find any calls to $SP() that is not inside comments, and remove line breaks
+  content = content.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').replace(/(\r\n|\n|\r)/gm," ").replace(/\s+/g," ").replace(/ \./g,".");
+  var mtch = content.match(/\$SP\(\)\.((list)\([^\)]+\)\.)?([^\(]+)/g);
   // for each $SP() found, we identify the module
   if (mtch) {
     mtch.forEach(function(m) {
@@ -31,7 +31,7 @@ module.exports = function(content, mapSource) {
 
   if (content && (/import \$SP from .sharepointplus./.test(content) || /import * as \$SP from .sharepointplus./.test(content)) && this.resourcePath && !/sharepointplus/i.test(this.resourcePath)) {
     // find the $SP() in the current file
-    var modules = findModules(content);
+    var modules = findModules(this.resourcePath, content);
     var resourcePath = this.resourcePath;
 
     // if we have "sp-loader-path:" then we'll scan the resources to find modules in the related resources
@@ -48,7 +48,7 @@ module.exports = function(content, mapSource) {
             // check if the path is a file or a folder
             if (fs.lstatSync(filePath).isFile()) {
               var fileContent = fs.readFileSync(filePath, 'utf-8');
-              modules = findModules(fileContent, modules);
+              modules = findModules(filePath, fileContent, modules);
             }
           })
         }

@@ -1,7 +1,7 @@
 {
   "add": "/lists/add.js",
   "addAttachment": "/lists/addAttachment.js",
-  "addressbook": "/people/adressbook.js",
+  "addressbook": "/people/addressbook.js",
   "ajax": "/utils/ajax.js",
   "arrayBufferToBase64": "/utils/arrayBufferToBase64.js",
   "arrayChunk": "/utils/arrayChunk.js",
