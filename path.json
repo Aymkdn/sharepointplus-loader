@@ -28,6 +28,7 @@
   "getVersion": "/main.js",
   "getWorkflowID": "/lists/getWorkflowID.js",
   "groupMembers": "/people/groupMembers.js",
+  "hasPermission": "/lists/hasPermission.js",
   "hasREST": "/utils/hasREST.js",
   "history": "/lists/history.js",
   "info": "/lists/info.js",
