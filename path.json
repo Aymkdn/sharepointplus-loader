@@ -22,6 +22,7 @@
   "getPageSize": "/utils/getPageSize.js",
   "getPeopleLookup": "/utils/getPeopleLookup.js",
   "getRequestDigest": "/utils/getRequestDigest.js",
+  "getServerTime": "/utils/getServerTime.js",
   "getTimeZoneInfo": "/utils/getTimeZoneInfo.js",
   "getURL": "/utils/getURL.js",
   "getUserInfo": "/people/getUserInfo.js",
