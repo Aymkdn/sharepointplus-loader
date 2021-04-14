@@ -12,10 +12,10 @@ function findModules (filePath, content, modules) {
     mtch.forEach(function(m) {
       var res = m.match(/\$SP\(\)\.((list)\([^\)]+\)\.)?([^\(]+)/);
       if (res && res.length===4) {
-        if (res[2]) {
+        if (res[2] && res[2] !== "then") {
           modules.add(res[2]);
         }
-        if (res[3]) {
+        if (res[3] && res[3] !== "then") {
           modules.add(res[3]);
         }
       }
@@ -61,8 +61,12 @@ module.exports = function(content, mapSource) {
       var newContent = ["import spInit from 'sharepointplus/es5/init.js'"];
       var init = [];
       modules.forEach(function(mod) {
-        newContent.push("import "+mod+" from 'sharepointplus/es5"+paths[mod]+"'");
-        init.push(mod+':'+mod);
+        if (paths[mod]) {
+          newContent.push("import "+mod+" from 'sharepointplus/es5"+paths[mod]+"'");
+          init.push(mod+':'+mod);
+        } else {
+          console.error("[ERROR] SharepointPlus Module '"+mod+"' not found by `sharepointplus-loader` ("+this.resourcePath+")");
+        }
       });
       newContent.push("const $SP = spInit({"+init.join(', ')+"});");
       content = content.replace(/import \$SP from .sharepointplus.|import \* as \$SP from .sharepointplus./, newContent.join("\n"));
