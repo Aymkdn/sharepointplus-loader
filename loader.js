@@ -65,7 +65,7 @@ module.exports = function(content, mapSource) {
           newContent.push("import "+mod+" from 'sharepointplus/es5"+paths[mod]+"'");
           init.push(mod+':'+mod);
         } else {
-          console.error("[ERROR] SharepointPlus Module '"+mod+"' not found by `sharepointplus-loader` ("+this.resourcePath+")");
+          console.error("[ERROR] SharepointPlus Module '"+mod+"' not found by `sharepointplus-loader` ("+resourcePath+")");
         }
       });
       newContent.push("const $SP = spInit({"+init.join(', ')+"});");

@@ -35,6 +35,7 @@
   "history": "/lists/history.js",
   "info": "/lists/info.js",
   "isMember": "/people/isMember.js",
+  "isSPO": "/utils/isSPO.js",
   "list": "/lists/list.js",
   "lists": "/lists/lists.js",
   "moderate": "/lists/moderate.js",
@@ -64,6 +65,7 @@
   "view": "/lists/view.js",
   "views": "/lists/views.js",
   "waitModalDialog": "/modals/waitModalDialog.js",
+  "uuid": "/utils/uuid.js",
   "webService": "/utils/webService.js",
   "whoami": "/people/whoami.js",
   "workflowStatusToText": "/utils/workflowStatusToText.js"
